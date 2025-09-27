@@ -73,7 +73,7 @@ export function Hero() {
                         <h1 className={'text-2xl md:text-6xl font-serif text-center md:text-start text-primary-foreground pt-4 md:pt-7 gap-2'}>
                             Sajedur Rahman <span className={'block lg:inline ter-primary'}>Shakil</span>
                         </h1>
-                        <p className={'font-serif text-muted-foreground text-1xl md:text-xl sm:text-1xl text-center md:text-start pt-4 md:pt-8 pl-5 md:pl-2'}>
+                        <p className={'font-serif text-muted-foreground text-sm md:text-xl sm:text-1xl text-center md:text-start pt-4 md:pt-8 pl-5 md:pl-2'}>
                             I build scalable, production-ready web apps.
                             Experienced in delivering SaaS,
                             MVPs, and full-stack platforms with modern tech stacks.

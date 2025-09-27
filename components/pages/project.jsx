@@ -4,6 +4,7 @@ import React from "react";
 import {motion} from "framer-motion";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 import {projects} from "@/lib/data";
+import Image from "next/image";
 
 export function Project() {
     const cards = projects.map((card, index) => (
@@ -37,36 +38,63 @@ export function Project() {
 )
 ;
 }
-
-export const DummyContent = () => {
+export const DummyContent = ({ projects = [] }) => {
     return (
         <>
-            {[...new Array(3).fill(1)].map((_, index) => {
-                return (
-                    <div
-                        key={"dummy-content" + index}
-                        className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4">
-                        <p
-                            className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
+            {projects.map((item, i) => (
+                <React.Fragment key={i}>
+                    {/* Project Details Card */}
+                    <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-8">
+                        <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto mb-4">
               <span className="font-bold text-neutral-700 dark:text-neutral-200">
-                The first rule of Apple club is that you boast about Apple club.
+                Project Details
               </span>{" "}
-                            Keep a journal, quickly jot down a grocery list, and take amazing
-                            class notes. Want to convert those notes to text? No problem.
-                            Langotiya jeetu ka mara hua yaar is ready to capture every
-                            thought.
+                            {item.des}
                         </p>
-                        <img
-                            src="https://assets.aceternity.com/macbook.png"
-                            alt="Macbook mockup from Aceternity UI"
-                            height="500"
-                            width="500"
-                            className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain" />
+                        <div className={"p-2"}>
+                            <Image
+                                src={item.src1}
+                                alt="Project Details"
+                                height="500"
+                                width="500"
+                                className=" h-full w-full mx-auto object-contain"
+                            />
+                            <Image
+                                src={item.src2}
+                                alt="Project Details"
+                                height="500"
+                                width="500"
+                                className=" h-full w-full mx-auto object-contain"
+                            />
+                        </div>
                     </div>
-                );
-            })}
+
+                    {/* Case Study Card */}
+                    <div className="bg-[#E8F0FE] dark:bg-neutral-900 p-8 md:p-14 rounded-3xl mb-8">
+                        <p className="text-neutral-700 dark:text-neutral-300 text-base md:text-2xl font-sans max-w-3xl mx-auto mb-4">
+              <span className="font-bold text-neutral-800 dark:text-neutral-100">
+                Case Study
+              </span>
+                        </p>
+                        <div>
+                            <h1>{item.title}-</h1>
+                            <ol>
+                                <li>problem:{item.problem}</li>
+                                <li>solution:{item.solution}</li>
+                                <li>whatIBuilt:{item.whatIBuilt}</li>
+                                <li>outcome:{item.outcome}</li>
+                            </ol>
+                        </div>
+
+                    </div>
+                </React.Fragment>
+            ))}
         </>
     );
 };
+
+
+
+
 
 

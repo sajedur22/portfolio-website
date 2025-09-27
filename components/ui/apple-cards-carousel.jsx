@@ -20,6 +20,7 @@ import {
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import { useOutsideClick } from "@/hooks/use-outside-click";
+import {DummyContent} from "@/components/pages/project";
 
 export const CarouselContext = createContext({
   onCardClose: () => {},
@@ -206,7 +207,14 @@ export const Card = ({
                       className="mt-4 text-2xl font-semibold text-neutral-700 md:text-5xl dark:text-white">
                     {card.title}
                   </motion.p>
-                  <div className="py-10">{card.content}</div>
+                  <div className="py-10 text-muted-foreground">{card.des}</div>
+                  <div>
+                    <div className="py-10 text-muted-foreground">
+                      <div className="py-10 text-muted-foreground">
+                        <DummyContent projects={[card]}/>
+                      </div>
+                    </div>
+                  </div>
                 </motion.div>
               </div>
           )}
