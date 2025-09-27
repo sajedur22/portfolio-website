@@ -25,7 +25,7 @@ export default function History() {
         >
             <div className="flex flex-col justify-center items-center py-27 lg:px-[15%] content-center ">
                 <div className="max-w-3xl  text-center px-4 lg:px-0">
-                    <h2 className="text-5xl  font-serif  tracking-tight leading-tight mb-10 ">
+                    <h2 className="text-5xl text-primary-foreground font-serif  tracking-tight leading-tight mb-10 ">
                         Career History
                     </h2>
 
@@ -84,11 +84,11 @@ export default function History() {
                                         transition: { duration: 0.2 },
                                     }}
                                 >
-                                    <p className="text-sm text-muted-foreground">{item.date}</p>
-                                    <h3 className="text-lg font-bold text-primary">
+                                    <p className="text-sm text-primary-foreground">{item.date}</p>
+                                    <h3 className="text-lg font-bold text-primary-foreground">
                                         {item.title}
                                     </h3>
-                                    <p className="font-semibold">
+                                    <p className="font-semibold text-primary-foreground">
                                         {item.company || item.institution}
                                     </p>
                                     <p className="mt-2 text-sm text-muted-foreground">

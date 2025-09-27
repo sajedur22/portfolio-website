@@ -86,7 +86,7 @@ export default function Contact() {
         >
             <div className="grid grid-cols-1 lg:gap-10 lg:grid-cols-2 w-full max-w-sm md:max-w-2xl lg:max-w-5xl">
                 <div className="text-center mb-1">
-                    <h2 className="text-5xl font-serif tracking-tight leading-tight mb-3">
+                    <h2 className="text-5xl font-serif text-primary-foreground tracking-tight leading-tight mb-3">
                         Contact Me :)
                     </h2>
                     <p className="text-lg text-muted-foreground mb-8">
