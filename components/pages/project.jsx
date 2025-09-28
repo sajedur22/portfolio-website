@@ -77,12 +77,15 @@ export const DummyContent = ({ projects = [] }) => {
               </span>
                         </p>
                         <div>
-                            <h1>{item.title}-</h1>
+                            <h1 className={"text-white font-bold"}>{item.title}-</h1>
                             <ol>
-                                <li>problem:{item.problem}</li>
-                                <li>solution:{item.solution}</li>
-                                <li>whatIBuilt:{item.whatIBuilt}</li>
-                                <li>outcome:{item.outcome}</li>
+                                <li><span className={"text-white font-bold"}>Problem:</span>{item.problem}</li>
+                                <li><span className={"text-white font-bold"}>Solution:</span>{item.solution}
+                                </li>
+                                <li><span className={"text-white font-bold"}>WhatIBuilt:</span>{item.whatIBuilt}
+                                </li>
+                                <li><span className={"text-white font-bold"}>Outcome::</span>{item.outcome}
+                                </li>
                             </ol>
                         </div>
 
