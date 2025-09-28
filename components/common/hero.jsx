@@ -9,34 +9,39 @@ import LinkedinIcon from "@/public/images/linkedin.svg";
 import Link from "next/link";
 export function Hero() {
     return (
-        <section id={'home'} className=" h-[42rem] w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden top-0 right-0 pt-3">
-            <Spotlight />
+        <section
+            id="home"
+            className="h-[42rem] w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden pt-3"
+        >
+            <Spotlight/>
 
-            <div className={'flex flex-col md:flex-row justify-center items-center lg:px-[15%] md:gap-8 content-center px-16 gap-0'}>
+            <div className="flex flex-col md:flex-row justify-center items-center lg:px-[15%] md:gap-8 px-8 gap-6">
+                {/* Profile Image */}
                 <Image
                     src={profile}
-                     alt={'profile'}
-                    className={'rounded-full flex-shrink-0 w-[12.5rem] h-[14.5rem] md:w-[14.5rem] md:h-[15.5rem] '}
+                    alt="profile"
+                    className="rounded-full flex-shrink-0 w-[10.5rem] h-[11.5rem] md:w-[14.5rem] md:h-[15.5rem]"
                     width={512}
                     height={512}
-                    priority={true}
+                    priority
                 />
 
-                <div className={'flex flex-col justify-center'}>
-
-
-                    <h1 className={'text-2xl md:text-6xl font-serif text-center md:text-start text-primary-foreground pt-4 md:pt-7 gap-2'}>
+                {/* Text + Links */}
+                <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left">
+                    {/* Heading */}
+                    <h1 className="text-2xl md:text-6xl font-serif text-primary-foreground pt-4 md:pt-7">
                         Sajedur Rahman Shakil
                     </h1>
-                    <p className={'font-serif text-muted-foreground text-sm md:text-xl sm:text-1xl text-center md:text-start pt-4 md:pt-8 pl-5 md:pl-2'}>
-                        I build scalable, production-ready web apps.
-                        Experienced in delivering SaaS,
-                        MVPs, and full-stack platforms with modern tech stacks.
-                        Open to remote roles & freelance projects.
+
+                    {/* Paragraph */}
+                    <p className="font-serif text-muted-foreground text-sm md:text-xl pt-4 md:pt-8 md:pl-2 max-w-xl">
+                        I build scalable, production-ready web apps. Experienced in delivering
+                        SaaS, MVPs, and full-stack platforms with modern tech stacks. Open to
+                        remote roles & freelance projects.
                     </p>
 
-                    <div className="flex flex-row md:order-first justify-center md:justify-start gap-4 mb-4 pt-2 md:mb-0">
-
+                    {/* Social Links (always last on mobile) */}
+                    <div className="flex flex-row justify-center md:justify-start gap-4 mt-6 order-last md:order-none">
                         <Link
                             href="https://github.com/sajedur22"
                             target="_blank"
@@ -70,24 +75,28 @@ export function Hero() {
                             className="social-link"
                             aria-label="Send me an email"
                         >
-
-                            <Mail className="invert-0 dark:invert transition-all duration-300" width={24} height={24}/>
+                            <Mail
+                                className="invert-0 dark:invert transition-all duration-300"
+                                width={24}
+                                height={24}
+                            />
                         </Link>
                         <Link
-                            href="/"
+                            href="/sajedur22cv.pdf"
                             target="_blank"
+                            download
                             className="social-link"
                             aria-label="Download My Resume"
                         >
-                            <FileDown className="invert-0 dark:invert transition-all duration-300" width={24}
-                                      height={24}/>
+                            <FileDown
+                                className="invert-0 dark:invert transition-all duration-300"
+                                width={24}
+                                height={24}
+                            />
                         </Link>
                     </div>
-
                 </div>
             </div>
-
-
         </section>
     );
 }
