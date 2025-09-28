@@ -11,7 +11,7 @@ export function Hero() {
     return (
         <section
             id="home"
-            className="min-h-screen w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative pt-2"
+            className="min-h-screen w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative pt-0"
         >
             <Spotlight/>
 
@@ -34,17 +34,18 @@ export function Hero() {
                     </h1>
 
                     {/* Paragraph */}
-                    <p className="font-serif text-muted-foreground text-sm md:text-xl pt-4 md:pt-8 md:pl-2 max-w-xl">
+                    <p className="font-serif text-muted-foreground text-sm md:text-xl pt-4 md:pt-8 md:pl-2 max-w-xl leading-relaxed">
                         I build scalable, production-ready web apps. Experienced in delivering
                         SaaS, MVPs, and full-stack platforms with modern tech stacks. Open to
                         remote roles & freelance projects.
                     </p>
 
                     {/* Social Links */}
-                    <div className="flex flex-row justify-center md:justify-start gap-4 mt-6">
+                    <div className="flex flex-row text-white-800 justify-center md:justify-start gap-4 mt-6">
                         <Link href="https://github.com/sajedur22" target="_blank" aria-label="Visit my GitHub profile">
                             <Image src={GithubIcon} alt="GitHub" width={24} height={24}
-                                   className="invert-0 dark:invert transition-all duration-300"/>
+                                   className="invert-0 dark:invert transition-all duration-300
+                                   "/>
                         </Link>
                         <Link href="https://www.linkedin.com/in/sajedur-rahman-shakil-856893236" target="_blank"
                               aria-label="Visit my LinkedIn profile">

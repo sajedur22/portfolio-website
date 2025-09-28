@@ -1,19 +1,18 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { HousePlug } from "lucide-react";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
-
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {Menu} from "lucide-react";
+import { Menu } from "lucide-react";
 
 export default function Navbar() {
     const pathname = usePathname();
@@ -28,6 +27,8 @@ export default function Navbar() {
         { id: "contact", label: "Contact" },
     ];
 
+    const SCROLL_OFFSET = 160; // Adjust for navbar height
+
     const handleScrollClick = (e, targetId) => {
         if (pathname !== "/") return;
 
@@ -39,84 +40,83 @@ export default function Navbar() {
 
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.scrollY;
-
+            const offsetPosition = targetElement.offsetTop;
             window.scrollTo({ top: offsetPosition, behavior: "smooth" });
         }
     };
 
     useEffect(() => {
-        if (pathname === "/") {
-            const handleScroll = () => {
-                const sections = links
-                    .map((link) => document.getElementById(link.id))
-                    .filter((el) => el !== null);
-                const scrollPosition = window.scrollY + 160;
+        if (pathname !== "/") return;
 
-                let currentSection = "home";
-                for (const section of sections) {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY + SCROLL_OFFSET;
+            let current = "home";
+
+            for (const link of links) {
+                const section = document.getElementById(link.id);
+                if (section) {
                     if (
                         section.offsetTop <= scrollPosition &&
                         section.offsetTop + section.offsetHeight > scrollPosition
                     ) {
-                        currentSection = section.id;
+                        current = section.id;
                         break;
                     }
                 }
-                setActiveSection(currentSection);
-            };
+            }
+            setActiveSection(current);
+        };
 
-            window.addEventListener("scroll", handleScroll);
-            return () => window.removeEventListener("scroll", handleScroll);
-        }
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, [pathname, links]);
 
-    return (
-        <header className="fixed top-0 left-0 w-full z-50 bg-background shadow-md duration-300 backdrop-blur-sm shadow-sm transition-colors dark:bg-background/80">
-            {/* Desktop Navbar */}
-            <div className="hidden md:flex justify-between items-center p-6 h-14">
-                <div className="text-2xl cursor-pointer">🔎</div>
-                <nav className="flex justify-between text-lg font-medium gap-6">
-                    {links.map((link) => {
-                        const isActive =
-                            (pathname === "/projects" && link.id === "projects") ||
-                            (pathname === "/" && activeSection === link.id);
+    const getLinkClasses = (linkId) =>
+        `cursor-pointer transition-colors ${
+            (pathname === "/projects" && linkId === "projects") ||
+            (pathname === "/" && activeSection === linkId)
+                ? "text-yellow-300"
+                : "text-muted-foreground"
+        } hover:text-yellow-300`;
 
-                        return (
-                            <Link
-                                key={link.id}
-                                href={`#${link.id}`}
-                                onClick={(e) => handleScrollClick(e, `#${link.id}`)}
-                                className={`cursor-pointer transition-colors ${
-                                    isActive ? "text-yellow-300" : "text-muted-foreground"
-                                } hover:text-yellow-300`}
-                            >
-                                {link.label}
-                            </Link>
-                        );
-                    })}
+    return (
+        <header
+            className="fixed top-0 left-0 w-full z-50 bg-background shadow-md backdrop-blur-sm transition-colors duration-300 dark:bg-background/80">
+
+            {/* Desktop Navbar */}
+            <div className="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-6">
+                <div className="text-primary-foreground cursor-pointer"><Link href={'/'}><HousePlug /></Link></div>
+                <nav className="flex justify-between text-lg font-medium gap-6">
+                    {links.map((link) => (
+                        <Link
+                            key={link.id}
+                            href={`#${link.id}`}
+                            onClick={(e) => handleScrollClick(e, `#${link.id}`)}
+                            className={getLinkClasses(link.id)}
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
                 </nav>
             </div>
 
             {/* Mobile Navbar */}
-            <div className="flex md:hidden justify-between items-center px-6 h-12">
-                <div className="text-2xl cursor-pointer">🔎</div>
+            <div className="flex md:hidden justify-between items-center h-12 max-w-7xl mx-auto px-6">
+                <div className="text-primary-foreground cursor-pointer"><Link href={'/'}><HousePlug/></Link></div>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <button   aria-label="Open navigation  menu" className={'p-2 rounded-md '}><Menu className="h-6 w-6 text-white " /></button>
+                    <button aria-label="Open navigation menu" className="p-2 rounded-md">
+                            <Menu className="h-6 w-6 text-white"/>
+                        </button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="w-40">
-
-                        <DropdownMenuSeparator />
+                        <DropdownMenuSeparator/>
                         {links.map((link) => (
                             <DropdownMenuItem key={link.id} asChild>
                                 <Link
                                     href={`#${link.id}`}
                                     onClick={(e) => handleScrollClick(e, `#${link.id}`)}
-                                    className={`cursor-pointer ${
-                                        activeSection === link.id ? "text-yellow-300" : ""
-                                    }`}
+                                    className={getLinkClasses(link.id)}
                                 >
                                     {link.label}
                                 </Link>
@@ -126,5 +126,6 @@ export default function Navbar() {
                 </DropdownMenu>
             </div>
         </header>
+
     );
 }

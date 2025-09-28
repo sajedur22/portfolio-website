@@ -8,14 +8,15 @@ import Contact from "@/components/pages/contact";
 
 const Page = () => {
     return (
-        <div>
-          <Navbar/>
+        <div className="min-h-screen ">
+            <Navbar/>
             <Hero/>
             <Aboutme/>
             <History/>
             <Project/>
             <Contact/>
         </div>
+
     );
 };
 
