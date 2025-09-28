@@ -11,11 +11,11 @@ export function Hero() {
     return (
         <section
             id="home"
-            className="h-[42rem] w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden pt-3"
+            className="min-h-screen w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative pt-2"
         >
             <Spotlight/>
 
-            <div className="flex flex-col md:flex-row justify-center items-center lg:px-[15%] md:gap-8 px-8 gap-6">
+            <div className="flex flex-col md:flex-row justify-center items-center lg:px-[15%] md:gap-10 px-5 gap-6">
                 {/* Profile Image */}
                 <Image
                     src={profile}
@@ -40,63 +40,28 @@ export function Hero() {
                         remote roles & freelance projects.
                     </p>
 
-                    {/* Social Links (always last on mobile) */}
-                    <div className="flex flex-row justify-center md:justify-start gap-4 mt-6 order-last md:order-none">
-                        <Link
-                            href="https://github.com/sajedur22"
-                            target="_blank"
-                            className="social-link"
-                            aria-label="Visit my GitHub profile"
-                        >
-                            <Image
-                                src={GithubIcon}
-                                alt="GitHub"
-                                className="invert-0 dark:invert transition-all duration-300"
-                                width={24}
-                                height={24}
-                            />
+                    {/* Social Links */}
+                    <div className="flex flex-row justify-center md:justify-start gap-4 mt-6">
+                        <Link href="https://github.com/sajedur22" target="_blank" aria-label="Visit my GitHub profile">
+                            <Image src={GithubIcon} alt="GitHub" width={24} height={24}
+                                   className="invert-0 dark:invert transition-all duration-300"/>
                         </Link>
-                        <Link
-                            href="https://www.linkedin.com/in/sajedur-rahman-shakil-856893236"
-                            target="_blank"
-                            className="social-link"
-                            aria-label="Visit my LinkedIn profile"
-                        >
-                            <Image
-                                src={LinkedinIcon}
-                                alt="LinkedIn"
-                                className="invert-0 dark:invert transition-all duration-300"
-                                width={24}
-                                height={24}
-                            />
+                        <Link href="https://www.linkedin.com/in/sajedur-rahman-shakil-856893236" target="_blank"
+                              aria-label="Visit my LinkedIn profile">
+                            <Image src={LinkedinIcon} alt="LinkedIn" width={24} height={24}
+                                   className="invert-0 dark:invert transition-all duration-300"/>
                         </Link>
-                        <Link
-                            href="mailto:sajedur645@gmail.com"
-                            className="social-link"
-                            aria-label="Send me an email"
-                        >
-                            <Mail
-                                className="invert-0 dark:invert transition-all duration-300"
-                                width={24}
-                                height={24}
-                            />
+                        <Link href="mailto:sajedur645@gmail.com" aria-label="Send me an email">
+                            <Mail width={24} height={24} className="invert-0 dark:invert transition-all duration-300"/>
                         </Link>
-                        <Link
-                            href="/sajedur22cv.pdf"
-                            target="_blank"
-                            download
-                            className="social-link"
-                            aria-label="Download My Resume"
-                        >
-                            <FileDown
-                                className="invert-0 dark:invert transition-all duration-300"
-                                width={24}
-                                height={24}
-                            />
+                        <Link href="/sajedur22cv.pdf" target="_blank" download aria-label="Download My Resume">
+                            <FileDown width={24} height={24}
+                                      className="invert-0 dark:invert transition-all duration-300"/>
                         </Link>
                     </div>
                 </div>
             </div>
         </section>
+
     );
 }
