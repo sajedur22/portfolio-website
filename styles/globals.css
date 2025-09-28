@@ -127,6 +127,6 @@ body {
   --sidebar-ring: oklch(0.552 0.016 285.938);
 }
 
-.about{
-  background-color: #383838;
+.social-link {
+  @apply p-2 rounded-full transition-all duration-300 hover:scale-110 hover:bg-neutral-200 dark:hover:bg-neutral-700;
 }
