@@ -23,7 +23,7 @@ export default function History() {
             id="career"
             className="flex items-start justify-center min-h-screen  "
         >
-            <div className="flex flex-col justify-center items-center py-27 lg:px-[15%] content-center ">
+            <div className="flex flex-col justify-center items-center py-27 lg:px-[15%] content-center  ">
                 <div className="max-w-3xl  text-center px-4 lg:px-0">
                     <h2 className="text-3xl md:text-5xl text-primary-foreground font-serif  tracking-tight leading-tight mb-10 ">
                         Career History
@@ -54,7 +54,7 @@ export default function History() {
                                 {/* Content Card */}
                                 <motion.div
                                     className={clsx(
-                                        "p-4 rounded-lg border border-border bg-card w-full text-left",
+                                        "p-4 rounded-lg border border-border dark:bg-input/10 w-full text-left",
                                         "md:w-[calc(50%-2rem)]",
                                         {
                                             "md:ml-auto": index % 2 === 0,

@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
-import { Send, CheckCircle, AlertCircle, RotateCcw } from "lucide-react";
+import {Send, CheckCircle, AlertCircle, RotateCcw, Mail, FileDown} from "lucide-react";
 import {
     Form,
     FormControl,
@@ -19,6 +19,10 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Alert, AlertDescription } from "../ui/alert";
 import { sendEmail } from "@/lib/actions";
+import Link from "next/link";
+import Image from "next/image";
+import GithubIcon from "@/public/images/github.svg";
+import LinkedinIcon from "@/public/images/linkedin.svg";
 
 // ✅ Validation schema
 const contactFormSchema = z.object({
@@ -223,18 +227,26 @@ export default function Contact() {
 
             <Separator className="mt-10 mb-8 max-w-xs md:max-w-xl lg:max-w-2xl" />
 
-            <div className="text-center max-w-sm md:max-w-lg text-muted-foreground">
+            <div className="text-center justify-center max-w-sm md:max-w-lg text-muted-foreground">
                 <p className="text-sm">
                     You can also reach me directly at{" "}
-                    <a
-                        href="mailto:getleon09@gmail.com"
-                        target="_blank"
-                        aria-label="Email Munna H. Leon"
-                        className="text-primary underline underline-offset-4 hover:text-primary/90"
-                    >
-                        getleon09@gmail.com
-                    </a>
                 </p>
+                <div className="flex flex-row text-white-800 justify-center gap-4 mt-6">
+                    <Link href="https://github.com/sajedur22" target="_blank" aria-label="Visit my GitHub profile">
+                        <Image src={GithubIcon} alt="GitHub" width={24} height={24}
+                               className="invert-0 dark:invert transition-all duration-300
+                                   "/>
+                    </Link>
+                    <Link href="https://www.linkedin.com/in/sajedur-rahman-shakil-856893236" target="_blank"
+                          aria-label="Visit my LinkedIn profile">
+                        <Image src={LinkedinIcon} alt="LinkedIn" width={24} height={24}
+                               className="invert-0 dark:invert transition-all duration-300"/>
+                    </Link>
+                    <Link href="mailto:sajedur645@gmail.com" aria-label="Send me an email">
+                        <Mail width={24} height={24} className="invert-0 dark:invert transition-all duration-300"/>
+                    </Link>
+
+                </div>
             </div>
         </section>
     );
