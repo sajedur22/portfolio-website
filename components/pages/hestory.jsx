@@ -54,7 +54,7 @@ export default function History() {
                                 {/* Content Card */}
                                 <motion.div
                                     className={clsx(
-                                        "p-4 rounded-lg border border-border dark:bg-input/10 w-full text-left",
+                                        "p-4 rounded-lg border border-border dark:bg-input/20 w-full text-left",
                                         "md:w-[calc(50%-2rem)]",
                                         {
                                             "md:ml-auto": index % 2 === 0,
