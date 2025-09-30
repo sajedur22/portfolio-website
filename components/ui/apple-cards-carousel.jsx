@@ -219,7 +219,7 @@ export const Card = ({
               </div>
           )}
         </AnimatePresence>
-        <motion.button
+        <motion.div
             layoutId={`card-${card.title}`}
             onClick={handleOpen}
             whileHover={{ scale: 1.03 }}
@@ -304,7 +304,7 @@ export const Card = ({
               ))}
             </div>
           </div>
-        </motion.button>
+        </motion.div>
 
 
       </>
