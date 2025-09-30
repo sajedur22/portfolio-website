@@ -22,8 +22,8 @@ export default function Navbar() {
         { id: "home", label: "Home" },
         { id: "about", label: "About" },
         { id: "career", label: "Career" },
-        { id: "services", label: "Services" },
         { id: "projects", label: "Projects" },
+        { id: "services", label: "Services" },
         { id: "contact", label: "Contact" },
     ];
 
