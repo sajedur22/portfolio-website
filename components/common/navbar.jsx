@@ -85,7 +85,7 @@ export default function Navbar() {
 
             {/* Desktop Navbar */}
             <div className="hidden md:flex justify-between items-center h-14 max-w-7xl mx-auto px-6">
-                <div className="text-primary-foreground cursor-pointer"><Link href={'/'}><HousePlug /></Link></div>
+                <div className="text-primary-foreground cursor-pointer"><Link href={`#${links.id}`}><HousePlug /></Link></div>
                 <nav className="flex justify-between text-lg font-medium gap-6">
                     {links.map((link) => (
                         <Link
