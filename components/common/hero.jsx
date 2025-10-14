@@ -55,7 +55,7 @@ export function Hero() {
                         <Link href="mailto:sajedur645@gmail.com" aria-label="Send me an email">
                             <Mail width={24} height={24} className="invert-0 dark:invert transition-all duration-300"/>
                         </Link>
-                        <Link href="/sajedur22cv.pdf" target="_blank" download aria-label="Download My Resume">
+                        <Link href="/sajedur777cv.pdf" target="_blank" download aria-label="Download My Resume">
                             <FileDown width={24} height={24}
                                       className="invert-0 dark:invert transition-all duration-300"/>
                         </Link>
