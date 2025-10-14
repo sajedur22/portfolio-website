@@ -91,7 +91,7 @@ export default function History() {
                                     <p className="font-semibold text-primary-foreground">
                                         {item.company || item.institution}
                                     </p>
-                                    <p className="mt-2 text-sm text-muted-foreground">
+                                    <p className="mt-2 text-sm text-accent/90">
                                         {item.description}
                                     </p>
                                 </motion.div>

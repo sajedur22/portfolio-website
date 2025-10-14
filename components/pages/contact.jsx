@@ -93,7 +93,7 @@ export default function Contact() {
                     <h2 className="text-3xl md:text-5xl font-serif text-primary-foreground tracking-tight leading-tight mb-3">
                         Contact Me :)
                     </h2>
-                    <p className="text-lg text-muted-foreground mb-8">
+                    <p className="text-lg text-accent/70 mb-8">
                         I'm always open to discussing new projects, creative ideas, or
                         opportunities to be part of your vision. Feel free to reach out!
                     </p>
