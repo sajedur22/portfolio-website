@@ -105,7 +105,7 @@ export default function Navbar() {
                 <div className="text-primary-foreground cursor-pointer"><Link href={'/'}><HousePlug/></Link></div>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                    <button aria-label="Open navigation menu" className="p-2 rounded-md">
+                    <button aria-label="Open navigation menu" className="p-2 rounded-md" suppressHydrationWarning>
                             <Menu className="h-6 w-6 text-white"/>
                         </button>
                     </DropdownMenuTrigger>

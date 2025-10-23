@@ -54,7 +54,7 @@ const Aboutme = () => {
                                        whileInView={{opacity: 1, y: 0}}
                                        transition={{duration: 0.6, delay: 0.1}}
                                    >
-                                       <Card className="max-w-md border dark:bg-input/30 text-secondary">
+                                       <Card className="max-w-md border dark:bg-sidebar-foreground/30 text-secondary">
                                            <CardHeader>
                                                <div>
                                                    <CardTitle className={'text-3xl  '}>{category.title}</CardTitle>
@@ -63,13 +63,13 @@ const Aboutme = () => {
 
                                            <CardFooter>
                                                <CardAction className={''}>
-                                                   {category.data.map((tech)=> {
-                                                       return (
-                                                           <button key={tech} className="px-2 py-1 rounded-md border text-1xl ">
-                                                               {tech}
-                                                           </button>
-                                                       )
-                                                   })}
+                                                <div className="mt-3 flex flex-wrap gap-2">
+                                                       {category.data.map((tech,i) => (
+                                                             <span  key={i} className="rounded-full bg-gray-200 px-3 py-1 text-xs font-medium text-gray-700 dark:bg-neutral-800 dark:text-gray-200" >
+                                                                {tech}
+                                                                </span> ))}
+                                                              </div>
+                                                   
 
                                                </CardAction>
                                            </CardFooter>
