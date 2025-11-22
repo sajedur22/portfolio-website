@@ -132,3 +132,32 @@ html,body {
   --sidebar-ring: oklch(0.552 0.016 285.938);
 }
 
+
+/* Default mobile - no shape */
+.pentagon-card {
+  clip-path: none;
+  position: relative;
+  
+  z-index: 1;
+   /* very important */
+}
+
+
+
+/* Desktop shape */
+@media (min-width: 768px) {
+  .pentagon-card {
+    clip-path: polygon(
+      0% 0%,
+      90% 0%,
+      100% 20%,
+      100% 100%,
+      0% 100%
+    );
+  }
+}
+
+
+
+
+
