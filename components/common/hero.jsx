@@ -21,8 +21,12 @@ export function Hero() {
       {/* ==== CARD START ==== */}
       <div
         className="bg-white/10 backdrop-blur-md shadow-xl 
-                p-8 md:p-10 mt-8 md:mt-40 w-fit flex flex-col md:flex-row items-center gap-6
-               pentagon-card   z-50"
+             p-6 sm:p-8 md:p-10
+             mt-10 sm:mt-8 md:mt-40 lg:mt-40 xl:mt-48
+             w-full max-w-[90%] md:max-w-[800px] 
+             mx-auto 
+             flex flex-col md:flex-row items-center gap-6
+             pentagon-card z-50"
       >
         {/* Profile Image */}
         <Image
