@@ -8,46 +8,65 @@ import GithubIcon from "@/public/images/github.svg";
 import LinkedinIcon from "@/public/images/linkedin.svg";
 import Link from "next/link";
 
-const data = [{ title: "Blog>>" }];
+const data = [
+  { title: "Blog>>" },
+  { title: "Ai/Ml" },
+  { title: "Python" },
+  { title: "JavaScript" },
+  { title: "Next.js" },
+  { title: "React" },
+  { title: "Backend" },
+  { title: "SaaS" },
+];
 
 export function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen w-full flex flex-col items-center  bg-black/[0.96]  antialiased bg-grid-white/[0.02] relative pt-0 "
+      className="min-h-screen w-full flex flex-col items-center  antialiased  relative pt-0"
     >
       <Spotlight />
 
-      {/* ==== CARD START ==== */}
+      {/* === CARD START === */}
       <div
-        className="bg-white/10 backdrop-blur-md shadow-xl 
-             p-6 sm:p-8 md:p-10
-             mt-10 sm:mt-8 md:mt-40 lg:mt-40 xl:mt-48
-             w-full max-w-[90%] md:max-w-[800px] 
-             mx-auto 
-             flex flex-col md:flex-row items-center gap-6
-             pentagon-card z-50"
+        className="
+    
+      shadow-xl 
+    p-6 sm:p-8 md:p-10
+    mt-12 sm:mt-10 md:mt-32 lg:mt-40 xl:mt-44
+
+    w-full max-w-[95%] sm:max-w-[90%] md:max-w-[780px] lg:max-w-[820px]
+    mx-auto
+    flex flex-col md:flex-row items-center md:items-start gap-8
+    pentagon-card
+  "
       >
         {/* Profile Image */}
         <Image
           src={profile}
           alt="profile"
-          className="rounded-full w-[10.5rem] h-[11.5rem] md:w-[14.5rem] md:h-[15.5rem]"
-          width={512}
-          height={512}
+          className="
+    rounded-full 
+    aspect-square 
+    object-cover
+    w-[10.5rem] 
+    md:w-[14.5rem]
+  "
+          width={412}
+          height={412}
           priority
         />
 
         {/* Text + Links */}
         <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left max-w-xl">
-          <h1 className="text-2xl md:text-4xl font-serif text-primary-foreground">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif text-primary-foreground">
             Sajedur Rahman Shakil
           </h1>
 
-          <p className="font-serif text-muted-foreground text-sm md:text-xl pt-4 leading-relaxed">
-            I build scalable, production-ready web apps. Experienced in
-            delivering SaaS, MVPs, and full-stack platforms with modern tech
-            stacks. Open to remote roles & freelance projects.
+          <p className="font-serif text-ring text-sm sm:text-base md:text-lg pt-4 leading-relaxed">
+            I build scalable, production-ready web apps. Experienced in SaaS,
+            full-stack products, and high-performance backend systems. Open to
+            remote roles & freelance projects.
           </p>
 
           {/* Social Links */}
@@ -63,7 +82,7 @@ export function Hero() {
             </Link>
 
             <Link
-              href="https://www.linkedin.com/in/sajedur-rahman-shakil-856893236"
+              href="https://linkedin.com/in/sajedur-rahman-shakil-856893236"
               target="_blank"
             >
               <Image
@@ -85,18 +104,38 @@ export function Hero() {
           </div>
         </div>
       </div>
-      {/* ==== CARD END ==== */}
 
-      {/* ==== BUTTONS UNDER CARD ==== */}
-      <div className="mt-10 md:mt-20 p-2 flex flex-wrap gap-2">
-        {data.map((item, index) => (
-          <button
-            key={index}
-            className="rounded-full border border-amber-200 bg-gray-200 px-3 py-1 text-xs font-medium text-gray-700 dark:bg-neutral-800 dark:text-gray-200"
-          >
-            {item.title}
-          </button>
-        ))}
+      {/* === MOVING BUTTONS BAR === */}
+      <div
+        className="
+          w-full max-w-[95%] sm:max-w-[90%] md:max-w-[780px] lg:max-w-[820px]
+          mx-auto mt-4 sm:mt-6 md:mt-20 
+          p-3 bg-gray-200 dark:bg-neutral-800 
+          rounded-full flex items-center gap-3 overflow-hidden
+        "
+      >
+        {/* Headline */}
+        <div className="rounded-full border border-amber-300 bg-white px-3 py-1 text-xs font-semibold text-gray-800 dark:bg-neutral-700 dark:text-gray-100 whitespace-nowrap">
+          blog
+        </div>
+
+        {/* Scrolling Buttons */}
+        <div className="tags-scroll">
+          <div className="inner">
+            {data.map((item, index) => (
+              <button
+                key={index}
+                className="
+                rounded-full border border-amber-300 bg-white 
+                px-3 py-1 text-xs font-medium text-gray-800 
+                dark:bg-neutral-700 dark:text-gray-100 whitespace-nowrap
+              "
+              >
+                {item.title}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
