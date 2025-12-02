@@ -63,7 +63,7 @@ export function Hero() {
             Sajedur Rahman Shakil
           </h1>
 
-          <p className="font-serif text-ring text-sm sm:text-base md:text-lg pt-4 leading-relaxed">
+          <p className="font-serif text-popover text-sm sm:text-base md:text-lg pt-4 leading-relaxed">
             I build scalable, production-ready web apps. Experienced in SaaS,
             full-stack products, and high-performance backend systems. Open to
             remote roles & freelance projects.
@@ -77,7 +77,7 @@ export function Hero() {
                 alt="GitHub"
                 width={24}
                 height={24}
-                className="dark:invert"
+                className="bg-muted rounded"
               />
             </Link>
 
@@ -90,16 +90,16 @@ export function Hero() {
                 alt="LinkedIn"
                 width={24}
                 height={24}
-                className="dark:invert"
+                className="bg-muted rounded"
               />
             </Link>
 
             <Link href="mailto:sajedur645@gmail.com">
-              <Mail width={24} height={24} className="dark:invert" />
+              <Mail width={24} height={24} className="bg-muted rounded" />
             </Link>
 
             <Link href="/sajedur777cv.pdf" target="_blank" download>
-              <FileDown width={24} height={24} className="dark:invert" />
+              <FileDown width={24} height={24} className="bg-muted rounded" />
             </Link>
           </div>
         </div>
