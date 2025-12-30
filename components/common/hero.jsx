@@ -82,7 +82,7 @@ export function Hero() {
             </Link>
 
             <Link
-              href="https://linkedin.com/in/sajedur-rahman-shakil-856893236"
+              href="https://www.linkedin.com/in/sajedur-rahman-shakil"
               target="_blank"
             >
               <Image
