@@ -54,7 +54,7 @@ export function Hero() {
             />
           </Link>
 
-          <Link href="https://www.linkedin.com/in/sajedur-rahman-shakil" target="_blank">
+          <Link href="https://linkedin.com/in/sajedur-rahman-shakil" target="_blank">
             <Image
               src={LinkedinIcon}
               alt="LinkedIn"
