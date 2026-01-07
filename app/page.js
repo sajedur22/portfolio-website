@@ -1,26 +1,24 @@
-import React from 'react';
+import React from "react";
 import Navbar from "@/components/common/navbar";
-import {Hero} from "@/components/common/hero";
+import { Hero } from "@/components/common/hero";
 import Aboutme from "@/components/pages/aboutme";
 import History from "@/components/pages/hestory";
-import {Project} from "@/components/pages/project";
+import { Project } from "@/components/pages/project";
 import Contact from "@/components/pages/contact";
 import Services from "@/components/pages/services";
 
 const Page = () => {
-    return (
-        <div className="min-h-screen ">
-            <Navbar/>
-            <Hero/>
-            <Aboutme/>
-            <History/>
-            <Project/>
-            <Services/>
-            <Contact/>
-
-        </div>
-
-    );
+  return (
+    <div className="min-h-screen ">
+      <Navbar />
+      <Hero />
+      <Aboutme />
+      <History />
+      <Project />
+      <Services />
+      <Contact />
+    </div>
+  );
 };
 
 export default Page;

@@ -15,25 +15,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-    title: "Sajedur Rahman Shakil",
-    description: "my portfolio website",
-    icons: {
-        icon: "/myphoto.ico", // এখানে favicon path
-    },
+  title: "Sajedur Rahman Shakil",
+  description: "my portfolio website",
+  icons: {
+    icon: "/myphoto.ico", // এখানে favicon path
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-      <html lang="en">
+    <html lang="en">
       <head>
-          <link rel="icon" href="/myphoto.ico" type="image/ico"/>
-          <title>Sajedur Rahman Shakil</title>
-
+        <link rel="icon" href="/myphoto.ico" type="image/ico" />
+        <title>Sajedur Rahman Shakil</title>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-      {children}
-      </body>
-      </html>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
+    </html>
   );
 }
-

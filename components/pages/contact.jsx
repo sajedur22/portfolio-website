@@ -6,15 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
-import {Send, CheckCircle, AlertCircle, RotateCcw, Mail, FileDown} from "lucide-react";
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "../ui/form";
+import { Send, CheckCircle, AlertCircle, RotateCcw, Mail, FileDown } from "lucide-react";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Alert, AlertDescription } from "../ui/alert";
@@ -26,228 +19,234 @@ import LinkedinIcon from "@/public/images/linkedin.svg";
 
 // ✅ Validation schema
 const contactFormSchema = z.object({
-    name: z
-        .string()
-        .min(2, "Name must be at least 2 characters")
-        .max(50, "Name must be less than 50 characters"),
-    email: z
-        .string()
-        .email("Please enter a valid email address")
-        .min(1, "Email is required"),
-    subject: z
-        .string()
-        .min(5, "Subject must be at least 5 characters")
-        .max(100, "Subject must be less than 100 characters"),
-    message: z
-        .string()
-        .min(10, "Message must be at least 10 characters")
-        .max(1000, "Message must be less than 1000 characters"),
+  name: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .max(50, "Name must be less than 50 characters"),
+  email: z.string().email("Please enter a valid email address").min(1, "Email is required"),
+  subject: z
+    .string()
+    .min(5, "Subject must be at least 5 characters")
+    .max(100, "Subject must be less than 100 characters"),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(1000, "Message must be less than 1000 characters"),
 });
 
 export default function Contact() {
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
-    const form = useForm({
-        resolver: zodResolver(contactFormSchema),
-        defaultValues: {
-            name: "",
-            email: "",
-            subject: "",
-            message: "",
-        },
-    });
+  const form = useForm({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
+  });
 
-    const onSubmit = async (data) => {
-        setIsSubmitting(true);
-        setSubmitStatus(null);
+  const onSubmit = async (data) => {
+    setIsSubmitting(true);
+    setSubmitStatus(null);
 
-        try {
-            const response = await sendEmail(data);
-            if (response.success) {
-                setSubmitStatus("success");
-            } else {
-                setSubmitStatus("error");
-                throw new Error(response.message || "Failed to send email");
-            }
-        } catch (error) {
-            console.error("Error sending email:", error);
-            setSubmitStatus("error");
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
+    try {
+      const response = await sendEmail(data);
+      if (response.success) {
+        setSubmitStatus("success");
+      } else {
+        setSubmitStatus("error");
+        throw new Error(response.message || "Failed to send email");
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
-    const resetForm = () => {
-        setSubmitStatus(null);
-        form.reset();
-    };
+  const resetForm = () => {
+    setSubmitStatus(null);
+    form.reset();
+  };
 
-    return (
-        <section
-            id="contact"
-            className="flex flex-col pt-20 pb-10 lg:px-10 items-center justify-center"
-        >
-            <div className="grid grid-cols-1 lg:gap-10 lg:grid-cols-2 w-full max-w-sm md:max-w-2xl lg:max-w-5xl">
-                <div className="text-center mb-1">
-                    <h2 className="text-3xl md:text-5xl font-serif text-primary-foreground tracking-tight leading-tight mb-3">
-                        Contact Me :)
-                    </h2>
-                    <p className="text-lg text-accent/70 mb-8">
-                        I'm always open to discussing new projects, creative ideas, or
-                        opportunities to be part of your vision. Feel free to reach out!
-                    </p>
-                </div>
+  return (
+    <section
+      id="contact"
+      className="flex flex-col pt-20 pb-10 lg:px-10 items-center justify-center"
+    >
+      <div className="grid grid-cols-1 lg:gap-10 lg:grid-cols-2 w-full max-w-sm md:max-w-2xl lg:max-w-5xl">
+        <div className="text-center mb-1">
+          <h2 className="text-3xl md:text-5xl font-serif text-primary-foreground tracking-tight leading-tight mb-3">
+            Contact Me :)
+          </h2>
+          <p className="text-lg text-accent/70 mb-8">
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part
+            of your vision. Feel free to reach out!
+          </p>
+        </div>
 
-                <div className="w-full max-w-sm md:max-w-lg px-4 mx-auto lg:px-0">
-                    {submitStatus ? (
-                        <div className="space-y-4">
-                            {submitStatus === "success" && (
-                                <Alert className="w-full mb-6 border-green-200 bg-green-50 text-green-800 justify-center items-center">
-                                    <CheckCircle className="h-4 w-4" />
-                                    <AlertDescription>
-                                        Thank you for your message! I'll get back to you as soon as
-                                        possible.
-                                    </AlertDescription>
-                                </Alert>
-                            )}
+        <div className="w-full max-w-sm md:max-w-lg px-4 mx-auto lg:px-0">
+          {submitStatus ? (
+            <div className="space-y-4">
+              {submitStatus === "success" && (
+                <Alert className="w-full mb-6 border-green-200 bg-green-50 text-green-800 justify-center items-center">
+                  <CheckCircle className="h-4 w-4" />
+                  <AlertDescription>
+                    Thank you for your message! I'll get back to you as soon as possible.
+                  </AlertDescription>
+                </Alert>
+              )}
 
-                            {submitStatus === "error" && (
-                                <Alert className="w-full mb-6 border-red-200 bg-red-50 text-red-800 justify-center items-center">
-                                    <AlertCircle className="h-4 w-4" />
-                                    <AlertDescription>
-                                        Sorry, there was an error sending your message. Please try
-                                        again or reach out directly via email.
-                                    </AlertDescription>
-                                </Alert>
-                            )}
+              {submitStatus === "error" && (
+                <Alert className="w-full mb-6 border-red-200 bg-red-50 text-red-800 justify-center items-center">
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertDescription>
+                    Sorry, there was an error sending your message. Please try again or reach out
+                    directly via email.
+                  </AlertDescription>
+                </Alert>
+              )}
 
-                            <Button onClick={resetForm} variant="outline" className="w-full">
-                                <RotateCcw className="w-4 h-4 mr-2" />
-                                Send Another Message
-                            </Button>
-                        </div>
-                    ) : (
-                        <Form {...form}>
-                            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <FormField
-                                        control={form.control}
-                                        name="name"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormControl>
-                                                    <Input
-                                                        placeholder="Your name"
-                                                        {...field}
-                                                        disabled={isSubmitting}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-
-                                    <FormField
-                                        control={form.control}
-                                        name="email"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormControl>
-                                                    <Input
-                                                        type="email"
-                                                        placeholder="your.email@example.com"
-                                                        {...field}
-                                                        disabled={isSubmitting}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                </div>
-
-                                <FormField
-                                    control={form.control}
-                                    name="subject"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormControl>
-                                                <Input
-                                                    placeholder="What's this about?"
-                                                    {...field}
-                                                    disabled={isSubmitting}
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-
-                                <FormField
-                                    control={form.control}
-                                    name="message"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormControl>
-                                                <Textarea
-                                                    placeholder="Tell me about your project or idea..."
-                                                    className="min-h-[100px] resize-none"
-                                                    {...field}
-                                                    disabled={isSubmitting}
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-
-                                <Button
-                                    type="submit"
-                                    className="w-full"
-                                    disabled={isSubmitting}
-                                >
-                                    {isSubmitting ? (
-                                        <>
-                                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                                            Sending...
-                                        </>
-                                    ) : (
-                                        <>
-                                            <Send className="w-4 h-4 mr-2" />
-                                            Send Message
-                                        </>
-                                    )}
-                                </Button>
-                            </form>
-                        </Form>
+              <Button onClick={resetForm} variant="outline" className="w-full">
+                <RotateCcw className="w-4 h-4 mr-2" />
+                Send Another Message
+              </Button>
+            </div>
+          ) : (
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input placeholder="Your name" {...field} disabled={isSubmitting} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
                     )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            type="email"
+                            placeholder="your.email@example.com"
+                            {...field}
+                            disabled={isSubmitting}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                 </div>
-            </div>
 
-            <Separator className="mt-10 mb-8 max-w-xs md:max-w-xl lg:max-w-2xl" />
+                <FormField
+                  control={form.control}
+                  name="subject"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          placeholder="What's this about?"
+                          {...field}
+                          disabled={isSubmitting}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-            <div className="text-center justify-center max-w-sm md:max-w-lg text-muted-foreground">
-                <p className="text-sm">
-                    You can also reach me directly at{" "}
-                </p>
-                <div className="flex flex-row text-white-800 justify-center gap-4 mt-6">
-                    <Link href="https://github.com/sajedur22" target="_blank" aria-label="Visit my GitHub profile">
-                        <Image src={GithubIcon} alt="GitHub" width={24} height={24}
-                               className="invert-0 dark:invert transition-all duration-300
-                                   "/>
-                    </Link>
-                    <Link href="https://www.linkedin.com/in/sajedur-rahman-shakil-856893236" target="_blank"
-                          aria-label="Visit my LinkedIn profile">
-                        <Image src={LinkedinIcon} alt="LinkedIn" width={24} height={24}
-                               className="invert-0 dark:invert transition-all duration-300"/>
-                    </Link>
-                    <Link href="mailto:sajedur645@gmail.com" aria-label="Send me an email">
-                        <Mail width={24} height={24} className="invert-0 dark:invert transition-all duration-300"/>
-                    </Link>
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Tell me about your project or idea..."
+                          className="min-h-[100px] resize-none"
+                          {...field}
+                          disabled={isSubmitting}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-                </div>
-            </div>
-        </section>
-    );
+                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 mr-2" />
+                      Send Message
+                    </>
+                  )}
+                </Button>
+              </form>
+            </Form>
+          )}
+        </div>
+      </div>
+
+      <Separator className="mt-10 mb-8 max-w-xs md:max-w-xl lg:max-w-2xl" />
+
+      <div className="text-center justify-center max-w-sm md:max-w-lg text-muted-foreground">
+        <p className="text-sm">You can also reach me directly at </p>
+        <div className="flex flex-row text-white-800 justify-center gap-4 mt-6">
+          <Link
+            href="https://github.com/sajedur22"
+            target="_blank"
+            aria-label="Visit my GitHub profile"
+          >
+            <Image
+              src={GithubIcon}
+              alt="GitHub"
+              width={24}
+              height={24}
+              className="invert-0 dark:invert transition-all duration-300
+                                   "
+            />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/sajedur-rahman-shakil-856893236"
+            target="_blank"
+            aria-label="Visit my LinkedIn profile"
+          >
+            <Image
+              src={LinkedinIcon}
+              alt="LinkedIn"
+              width={24}
+              height={24}
+              className="invert-0 dark:invert transition-all duration-300"
+            />
+          </Link>
+          <Link href="mailto:sajedur645@gmail.com" aria-label="Send me an email">
+            <Mail
+              width={24}
+              height={24}
+              className="invert-0 dark:invert transition-all duration-300"
+            />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
 }
